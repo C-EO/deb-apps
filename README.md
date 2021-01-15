@@ -5,7 +5,7 @@
 ## To install Pi-Apps
 Make sure `git` is installed with `sudo apt install git`, then run:
 ```
-https://github.com/RaspberryRBX/deb-apps
+git clone https://github.com/RaspberryRBX/deb-apps.git
 ~/deb-apps/install
 ```
 The install script ensures YAD is installed, creates two menu buttons, and an autostarted updater. Nothing is modified outside your home directory.
@@ -27,12 +27,6 @@ Use the main window to quickly browse the selection of apps and easily install t
 - If you click **New App** in Settings, you can easily create your own Apps using the Create App Wizard.
 ![create app](https://github.com/Botspot/pi-apps/blob/master/icons/screenshots/create%20app.png?raw=true)  
 It helps you select an icon, create & debug install/uninstall scripts, write a description, and more.  
-## To-do
-- [X] Make app creation system. (completed with the `createapp` script)  
-- [X] Add Pi-Apps to Twister OS. (completed on 11/2/2020 via the Twister 1.8.5 patch.)  
-- [X] Make 32-bit and 64-bit install scripts.  
-- [X] Allow multiple apps to be selected from the app list and be installed simultaneously.  
-- [X] Add a search function to the app list. It's still experimental: to enable it, switch to **xlunch** in **Pi-Apps Settings** -> **App List Style**.
 
 ## How it works
  - Each 'App' is simply a small `install` script, `uninstall` script, two icon sizes, and two text files containing the description and a website URL.
