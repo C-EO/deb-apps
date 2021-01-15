@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Deb-Apps
+Comment=Simple Debian App Store for projects not in the repositories 
+Exec=/home/pi/deb-apps/gui
+Icon=/home/pi/deb-apps/icons/logo.png
+Terminal=false
+Type=Application
+Categories=Utility;

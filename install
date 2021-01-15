@@ -1,0 +1,69 @@
+#!/bin/bash
+
+function error {
+  echo -e "\e[91m$1\e[39m"
+  exit 1
+}
+
+DIRECTORY="$(readlink -f "$(dirname "$0")")"
+
+if ! command -v yad >/dev/null;then
+  echo -n "YAD is required but not installed. Install now? [Y/n]
+  Made By RaspberryRBX And Botspot "
+  read answer
+  if [ "$answer" == n ];then
+    error "User declined."
+  fi
+  if [ -f /usr/bin/apt ];then
+    sudo apt update
+    sudo apt install -y yad
+  elif [ -f /usr/bin/pacman ];then
+    sudo pacman -S yad
+  else
+    error "Failed to find any package manager"
+  fi
+fi
+
+#remove annoying YAD icon browser launcher
+sudo rm -f /usr/share/applications/yad-icon-browser.desktop
+
+echo "Creating menu button..."
+mkdir -p ~/.local/share/applications
+echo "[Desktop Entry]
+Name=Deb-Apps
+Comment=Debian App Store for open source projects
+Exec=${DIRECTORY}/gui
+Icon=${DIRECTORY}/icons/logo.png
+Terminal=false
+Type=Application
+Categories=Utility;" > ~/.local/share/applications/pi-apps.desktop
+
+echo "Adding Desktop shortcut..."
+cp -f ~/.local/share/applications/pi-apps.desktop ~/Desktop/pi-apps.desktop
+
+echo "Creating Settings menu button..."
+echo "[Desktop Entry]
+Name=Deb Apps Settings
+Comment=Configure Deb-Apps or create an App
+Exec=${DIRECTORY}/settings
+Icon=${DIRECTORY}/icons/logo.png
+Terminal=false
+Type=Application
+Categories=Settings;" > ~/.local/share/applications/pi-apps-settings.desktop
+
+
+mkdir -p "${DIRECTORY}/data"
+cd "${DIRECTORY}/data"
+mkdir -p installed-packages preload settings status update-status categories
+cd $HOME
+
+
+echo "Creating settings if they don"\'"t exist..."
+"${DIRECTORY}/settings" refresh
+
+echo "Preloading app list..."
+"${DIRECTORY}/preload" &>/dev/null
+
+echo "Installation complete."
+echo "This Was Made Possible By Botspot And RaspberryRBX."
+
