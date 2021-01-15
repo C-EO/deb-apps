@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DIRECTORY="$(dirname "$(dirname "$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )")")"
+
+function error {
+  echo -e "\\e[91m$1\\e[39m"
+  exit 1
+}
+
+wget https://launcher.mojang.com/download/Minecraft.deb -O ~/Downloads/Minecraft.deb
+
+cd ~/Downloads
+
+sudo dpkg -i Minecraft.deb
+
+sudo apt install -f
+
+exit 0

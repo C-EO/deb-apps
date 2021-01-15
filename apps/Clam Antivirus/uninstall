@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DIRECTORY="$(dirname "$(dirname "$(dirname "$0")")")"
+function error {
+  echo -e "\\e[31m$1\\e[39m"
+  exit 1
+}
+
+sudo apt remove clamav
+sudo apt remove clamtk
+
+exit 0
