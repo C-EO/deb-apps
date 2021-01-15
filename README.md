@@ -86,9 +86,8 @@ It helps you select an icon, create & debug install/uninstall scripts, write a d
    - `icons/` This stores all the icons that are embedded into various dialogs.
      - `screenshots/` Stores screenshots of various dialogs, mainly used as an image hosting service, though I suppose they could come in handy if an offline help dialog was made.
    - `update/` This folder holds the latest version of the entire Pi-Apps repository. It's contents is re-downloaded every time the `updater` script checks for updates. It is used to compare file hashes, detect when an app or file can be updated, and is used to copy new file versions into the main `pi-apps/` directory during an update.
-## Badge
 ### Q&A with RaspberryRBX
- - Why did you develop Pi-Apps?  
+ - Why did you develop Deb-Apps?  
 > I Was On Debian In A VM Using Botspots YTBuddy App Then Got Idea To Turn PiApps Into Deb Apps
 And Asked To Do This And Keep Botspot Updated Then Started Coding It.
 
